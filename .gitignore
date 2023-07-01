@@ -1,0 +1,5 @@
+.vscode/
+
+pb/*pb.go
+
+.DS_Store
