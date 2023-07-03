@@ -2,6 +2,7 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/innovationmech/grpc-client/internal/middleware"
 	_ "github.com/innovationmech/grpc-client/internal/pool"
 )
 
@@ -12,6 +13,8 @@ func Serve() {
 }
 
 func init() {
+	r.Use(middleware.LimitMiddleware())
+	r.Use(middleware.TimerMiddleware())
 	r.GET("/health", health)
 	r.GET("/dial_hello", dial)
 }
